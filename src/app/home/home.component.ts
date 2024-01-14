@@ -8,6 +8,7 @@ import { UserService } from '../_services/user.service';
 })
 export class HomeComponent implements OnInit {
   content?: string;
+selectedRecordId!: number;
 
   constructor(private userService: UserService) { }
 
@@ -24,5 +25,9 @@ export class HomeComponent implements OnInit {
         }
       }
     });
+  }
+
+  loadDetails(id: number): void {
+    this.selectedRecordId = id;
   }
 }
