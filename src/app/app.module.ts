@@ -37,6 +37,14 @@ import { SidebarComponent } from './test/sidebar/sidebar.component';
 import { MenuTabComponent } from './travaux/menu-tab/menu-tab.component';
 import { PointerMainOeuvreComponent } from './travaux/pointer-main-oeuvre/pointer-main-oeuvre.component';
 import { PlanifierMainOeuvreComponent } from './travaux/planifier-main-oeuvre/planifier-main-oeuvre.component';
+import { MaintenancePlanningComponent } from './travaux/maintenance-planning/maintenance-planning.component';
+import { CalendarComponent } from './travaux/planning/calendar/calendar.component';
+import { MaintenanceService } from './services/maintenance.service';
+import { ListOrganisationComponent } from './administration/organisation/list-organisation/list-organisation.component';
+import { AddOrganisationComponent } from './administration/organisation/add-organisation/add-organisation.component';
+import { OrganisationComponent } from './administration/organisation/organisation/organisation.component';
+import { OrganisationService } from './services/organisation.service';
+import { EditOrganisationComponent } from './administration/organisation/edit-organisation/edit-organisation.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +78,13 @@ import { PlanifierMainOeuvreComponent } from './travaux/planifier-main-oeuvre/pl
     SidebarComponent,
     MenuTabComponent,
     PointerMainOeuvreComponent,
-    PlanifierMainOeuvreComponent
+    PlanifierMainOeuvreComponent,
+    MaintenancePlanningComponent,
+    CalendarComponent,
+    ListOrganisationComponent,
+    AddOrganisationComponent,
+    OrganisationComponent,
+    EditOrganisationComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +92,7 @@ import { PlanifierMainOeuvreComponent } from './travaux/planifier-main-oeuvre/pl
     FormsModule,
     HttpClientModule,CommonModule,ReactiveFormsModule
   ],
-  providers: [httpInterceptorProviders],
+  providers: [httpInterceptorProviders, MaintenanceService,OrganisationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

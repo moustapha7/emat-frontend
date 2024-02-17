@@ -1,0 +1,7 @@
+<!-- sidebar.component.html -->
+<div class="sidebar">
+    <div *ngFor="let person of persons" draggable="true" (dragstart)="onDragStart(person, $event)">
+      {{ person }}
+    </div>
+  </div>
+  

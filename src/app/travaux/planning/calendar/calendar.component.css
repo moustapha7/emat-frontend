@@ -1,0 +1,15 @@
+/* calendar.component.css */
+.calendar {
+    border: 1px solid #ddd;
+    height: 400px;
+    padding: 10px;
+  }
+  
+  .event {
+    background-color: #3498db;
+    color: #fff;
+    margin-bottom: 5px;
+    padding: 5px;
+    cursor: pointer;
+  }
+  

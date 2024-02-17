@@ -1,0 +1,99 @@
+<app-menu-tab></app-menu-tab>
+
+
+  <div class="container">
+    <div class="card">
+        <div class="card-header">
+            Organisations
+            <div class="card-footer text-muted">
+                <a class="btn btn-outline-secondary" routerLink="/add-organisations" routerLinkActive="active"><i class="bi bi-plus"></i></a>
+                <a class="btn btn-outline-secondary" ><i class="bi bi-arrow-counterclockwise"></i></a>
+                <a class="btn btn-outline-secondary" routerLink="/organisations" routerLinkActive="active"><i class="bi bi-layout-split"></i></a>
+                <a class="btn btn-outline-secondary" routerLink="/list-organisations" routerLinkActive="active"><i class="bi bi-skip-end-fill"></i></a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="container">
+                <div class="wrapper">
+                    <!-- Sidebar -->
+                    <div class="sidebar">
+                      <h2>Sidebar</h2>
+                      <ul>
+                        <li *ngFor="let o of organisations; let i = index"
+                            >
+                          {{ o.entite }} <br>
+                          {{ o.description }}
+                          <td><button class="btn btn-info" (click)="updateOrg(o.id)"><i class="bi bi-eye"></i></button></td>
+                        </li>
+                      </ul>
+                    </div>
+                  
+                    <!-- Page Content -->
+                    <div class="content">
+                     
+                        <div class="container">
+                            <div class="card">
+                                <form [formGroup]="addForm" (ngSubmit)="updateOrganisation()">
+                        
+                                    <div class="card-header"></div>
+                                    <div class="card-body">
+                                        <div class="container">
+                                            <!-- Colonne 1 -->
+                                            <div class="row g-2">
+                                                <div class="col-md-6">
+                                                    <div class="col-md-10">
+                                                        <label for="textInput">Entité</label>
+                                                        <input type="text" class="form-control form-control-sm form-control form-control-sm-sm"
+                                                        formControlName="entite" placeholder="Entrer du texte" [readOnly]="true"
+                                                        [(ngModel)]="organisation.entite"
+                                                        [ngClass]="{ 'is-invalid': submitted && f['entite'].errors }">
+                                                        @if (submitted && f['entite'].errors) {
+                                                            <div class="invalid-feedback">
+                                                              @if (f['entite'].errors['required']) {
+                                                              <div>Entité est obligatoire</div>
+                                                              }
+                                                              @if (f['entite'].errors['minlength']) {
+                                                                <div>Entité doit avoir au moins 4 caractéres</div>
+                                                            }
+                                                            </div>
+                                                            }
+                                                    </div>
+                        
+                                                    <div class="col-md-10">
+                                                        <label for="textInput">Description</label>
+                                                        <input type="text" class="form-control form-control-sm" formControlName="description"
+                                                            placeholder="Entrer du texte" [(ngModel)]="organisation.description"
+                                                            [ngClass]="{ 'is-invalid': submitted && f['description'].errors }">
+                                                            @if (submitted && f['description'].errors) {
+                                                                <div class="invalid-feedback">
+                                                                @if (f['description'].errors['required']) {
+                                                                <div>Description est obligatoire</div>
+                                                                }
+                                                                @if (f['description'].errors['minlength']) {
+                                                                    <div>Description doit avoir au moins 5 caractéres</div>
+                                                                }
+                                                                </div>
+                                                                }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer text-muted">
+                                        <button class="btn btn-info"><i class="bi bi-floppy"></i></button>
+                                    </div>
+                                </form>
+                        
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+        <div class="card-footer text-muted">
+            
+        </div>
+    </div>
+</div>
+
+

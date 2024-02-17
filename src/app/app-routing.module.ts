@@ -26,6 +26,11 @@ import { OrdreDeTravailComponent } from './travaux/ordre-de-travail/ordre-de-tra
 import { ActivitesComponent } from './travaux/activites/activites.component';
 import { PointerMainOeuvreComponent } from './travaux/pointer-main-oeuvre/pointer-main-oeuvre.component';
 import { PlanifierMainOeuvreComponent } from './travaux/planifier-main-oeuvre/planifier-main-oeuvre.component';
+import { MaintenancePlanningComponent } from './travaux/maintenance-planning/maintenance-planning.component';
+import { ListOrganisationComponent } from './administration/organisation/list-organisation/list-organisation.component';
+import { OrganisationComponent } from './administration/organisation/organisation/organisation.component';
+import { AddOrganisationComponent } from './administration/organisation/add-organisation/add-organisation.component';
+import { EditOrganisationComponent } from './administration/organisation/edit-organisation/edit-organisation.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -61,6 +66,14 @@ const routes: Routes = [
   { path: 'activites', component: ActivitesComponent },
   { path: 'pointer-main-oeuvre', component: PointerMainOeuvreComponent },
   { path: 'planifier-main-oeuvre', component: PlanifierMainOeuvreComponent },
+  { path: 'planning-maintenance', component: MaintenancePlanningComponent },
+
+  { path: 'list-organisations', component: ListOrganisationComponent },
+  { path: 'organisations', component: OrganisationComponent },
+  { path: 'list-organisations', component: ListOrganisationComponent },
+  { path: 'add-organisations', component: AddOrganisationComponent },
+  { path: 'edit-organisations/:id', component: EditOrganisationComponent },
+
 
   
 ];

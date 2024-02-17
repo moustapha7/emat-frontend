@@ -1,0 +1,36 @@
+<app-menu-tab></app-menu-tab>
+<div class="container">
+    <div class="card">
+        <div class="card-header">Organisations
+            <div class="card-footer text-muted">
+                <a class="btn btn-outline-secondary" routerLink="/add-organisations" routerLinkActive="active"><i class="bi bi-plus"></i></a>
+                <a class="btn btn-outline-secondary" ><i class="bi bi-arrow-counterclockwise"></i></a>
+                <a class="btn btn-outline-secondary" routerLink="/organisations" routerLinkActive="active"><i class="bi bi-layout-split"></i></a>
+                <a class="btn btn-outline-secondary" routerLink="/list-organisations" routerLinkActive="active"><i class="bi bi-skip-end-fill"></i></a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="container">
+               <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Entité</th>
+                            <th>Description</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let o of organisations">
+                            <td>{{o.entite}}</td>
+                            <td>{{o.description}}</td>
+                            <td><button class="btn btn-danger" (click)="deleteOrg(o)"><i class="bi bi-trash"></i></button></td>
+                            <td><button class="btn btn-info" (click)="updateOrg(o.id)"><i class="bi bi-eye"></i></button></td>
+
+                        </tr>
+                    </tbody>
+               </table>
+            </div>
+        </div>
+       
+    </div>
+</div>

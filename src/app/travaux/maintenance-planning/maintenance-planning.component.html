@@ -1,0 +1,15 @@
+<!-- maintenance-planning.component.html -->
+<div class="container-fluid">
+    <div class="row">
+      <!-- Sidebar à gauche avec la liste de personnes -->
+      <div class="col-md-3">
+        <app-sidebar ></app-sidebar>
+      </div>
+  
+      <!-- Calendrier à droite avec des cases en vue jour, semaine et mois -->
+      <div class="col-md-9">
+        <app-calendar [events]="maintenanceEvents" (drop)="onDrop($event)"></app-calendar>
+      </div>
+    </div>
+  </div>
+  

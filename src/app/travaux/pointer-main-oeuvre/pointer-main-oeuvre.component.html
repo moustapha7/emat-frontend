@@ -2,21 +2,64 @@
 
 <div class="container">
     <div class="card">
-        <div class="card-header">Pointer main d'oeuvre</div>
+        <div class="card-header">Activités</div>
         <div class="card-body">
-            <!-- form-example.component.html -->
             <div class="container">
-                <form>
-                    <div class="row">
-                        <!-- Colonne 1 -->
-                    
-                    </div>
-
-                    <button type="submit" class="btn btn-primary">Soumettre</button>
-                </form>
+                <!-- form-with-sidebar.component.html -->
+<div class="container-fluid">
+    <div class="row">
+          <!-- Barre latérale à droite -->
+      <div class="col-md-4">
+        <!-- Sidebar avec des données séparées par des traits -->
+        <div class="sidebar">
+          <!-- Exemple de données dans la barre latérale -->
+          <div class="sidebar-item">Donnée 1 <i class="bi bi-eye"></i></div>
+          <hr> <!-- Trait de séparation -->
+          <div class="sidebar-item">Donnée 2</div>
+          <hr> <!-- Trait de séparation -->
+          <div class="sidebar-item">Donnée 3</div>
+          <!-- Ajoutez d'autres données si nécessaire -->
+        </div>
+      </div>
+      <!-- Colonne principale avec le formulaire -->
+      <div class="col-md-8">
+        <form>
+          <!-- Votre formulaire ici -->
+  
+          <!-- Groupe 1 -->
+          <div class="form-group">
+            <h5>Groupe 1 - Titre du Groupe</h5>
+            <hr> <!-- Séparateur -->
+  
+            <div class="form-row">
+              <!-- Colonne 1 du formulaire -->
+              <div class="col-md-6 mb-3">
+                <label for="textInput1">Champ de texte 1</label>
+                <input type="text" class="form-control form-control-lg" id="textInput1" placeholder="Entrer du texte">
+              </div>
+  
+              <div class="col-md-6 mb-3">
+                <label for="selectInput1">Sélection 1</label>
+                <select class="form-control form-control-lg" id="selectInput1">
+                  <option>Option 1</option>
+                  <option>Option 2</option>
+                  <option>Option 3</option>
+                </select>
+              </div>
             </div>
-
-
+          </div>
+  
+          <!-- Ajoutez d'autres groupes de formulaires si nécessaire -->
+  
+          <button type="submit" class="btn btn-primary">Soumettre</button>
+        </form>
+      </div>
+  
+    
+    </div>
+  </div>
+  
+            </div>
         </div>
         <div class="card-footer text-muted"></div>
     </div>

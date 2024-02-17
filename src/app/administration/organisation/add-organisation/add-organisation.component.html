@@ -1,0 +1,62 @@
+<div class="container">
+    <div class="card">
+        <form [formGroup]="addForm" (ngSubmit)="saveOrganisation()">
+
+            <div class="card-header"></div> 
+            <div class="card-body">
+                <div class="container">
+                    <!-- Colonne 1 -->
+                    <div class="row g-2">
+                        <div class="col-md-6">
+                            <div class="col-md-10">
+                                <label for="textInput">Entité</label>
+                                <input type="text" class="form-control form-control-sm form-control form-control-sm-sm"
+                                    formControlName="entite" placeholder="Entrer du texte"
+                                    [ngClass]="{ 'is-invalid': submitted && f['entite'].errors }">
+                                    @if (submitted && f['entite'].errors) {
+                                        <div class="invalid-feedback">
+                                          @if (f['entite'].errors['required']) {
+                                          <div>Entité est obligatoire</div>
+                                          }
+                                          @if (f['entite'].errors['minlength']) {
+                                            <div>Entité doit avoir au moins 4 caractéres</div>
+                                        }
+                                        </div>
+                                        }
+                            </div>
+
+                            <div class="col-md-10">
+                                <label for="textInput">Description</label>
+                                <input type="text" class="form-control form-control-sm" formControlName="description"
+                                    placeholder="Entrer du texte" 
+                                    [ngClass]="{ 'is-invalid': submitted && f['description'].errors }">
+                                    @if (submitted && f['description'].errors) {
+                                        <div class="invalid-feedback">
+                                          @if (f['description'].errors['required']) {
+                                          <div>Description est obligatoire</div>
+                                          }
+                                          @if (f['description'].errors['minlength']) {
+                                            <div>Description doit avoir au moins 5 caractéres</div>
+                                        }
+                                        </div>
+                                        }
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                   
+
+                </div>
+            </div>
+
+            <div class="card-footer text-muted">
+               
+                 <button class="btn btn-info"><i class="bi bi-floppy"></i></button>
+            
+            </div>
+        </form>
+
+    </div>
+</div>
