@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Organisation, Organisation2 } from '../../../models/organisation.model';
@@ -22,20 +22,35 @@ export class EditOrganisationComponent implements OnInit {
   id!: number;
   itemId!: number;
 
+  selectedData: any;
 
+  @Input() viewMode = false;
+
+  @Input() currentOrg: Organisation2 = {
+    id: 0,
+    entite: '',
+    description: ''
+  };
+
+  message ='';
   constructor(private orgService: OrganisationService,private router: Router, 
     private formBuilder : FormBuilder, private actRoute : ActivatedRoute) {}
 
   ngOnInit() {
 
-    this.id = this.actRoute.snapshot.params['id'];
-    this.updateOrg(this.id);
+   this.id = this.actRoute.snapshot.params['id'];
+   this.updateOrg(this.id);
+
 
     this.orgService.getOrgById(this.id).subscribe(
       (data : any)=> {
       this.organisation= data;
       });  
 
+      // if (!this.viewMode) {
+      //   this.message = '';
+      //   this.getOrgById(this.actRoute.snapshot.params["id"]);
+      // }
 
     this.addForm = this.formBuilder.group({
       entite : ['',  [Validators.required, Validators.minLength(4)]],
@@ -43,17 +58,29 @@ export class EditOrganisationComponent implements OnInit {
     });
 
    
-      this.listOrganisations();
+      this.orgService.selectedData$.subscribe((data) => {
+        this.selectedData = data;
+      });
   }
-  get f(): { [key: string]: AbstractControl } {
+
+
+  get f() {
     return this.addForm.controls;
+  }
+
+  getOrgById(id:any){
+    
+    this.orgService.getOrgById(this.id).subscribe(
+      (data : any)=> {
+      this.organisation= data;
+      }); 
   }
 
   updateOrg(id : number)  {
  
-    this.router.navigate(['edit-organisations', id]);
+    this.router.navigate(['emat/edit-organisations', id]);
     this.listOrganisations();
-
+   
   }
 
 
@@ -70,7 +97,7 @@ export class EditOrganisationComponent implements OnInit {
       {
         alert("Success Update");
         this.addForm.reset();
-        this.router.navigate(['organisations']);
+        this.router.navigate(['emat/organisations']);
         this.listOrganisations();
 
       },

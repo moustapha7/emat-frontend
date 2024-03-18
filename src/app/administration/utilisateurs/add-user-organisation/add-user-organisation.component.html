@@ -1,0 +1,84 @@
+
+
+<div class="container">
+    <div class="card">
+        <form [formGroup]="addForm" (ngSubmit)="saveR5UserOrganisation()">
+
+            <div class="card-header"></div> 
+            <div class="card-body">
+                <div class="container">
+                    <!-- Colonne 1 -->
+                    <div class="row g-2">
+                        <div class="col-md-6">
+                            <div class="col-md-10">
+                                <label for="textInput">Entité</label>
+                               
+                                <select class="form-select form-select-sm" aria-label="Small select example"
+                                [(ngModel)]="selectedOrganisation" 
+                                    formControlName="organisation2" placeholder="Entrer du texte" id="organisation2"
+                                    [ngClass]="{ 'is-invalid': submitted && f['organisation2'].errors }"
+                                    >
+                                    <option *ngFor="let o of organisations">{{o.entite}}</option>
+                                </select>   
+                                @if (submitted && f['organisation2'].errors) {
+                                    <div class="invalid-feedback">
+                                      @if (f['organisation2'].errors['required']) {
+                                      <div>Entité est obligatoire</div>
+                                      }
+                                    </div>
+                                    }     
+
+                            </div>
+                            <div class="col-md-10">
+                                <label for="textInput">Entité</label>
+                                <input type="text" class="form-control form-control-sm form-control form-control-sm-sm"
+                                    formControlName="uogorg" placeholder="Entrer du texte" value="selectedOrganisation"
+                                    [ngClass]="{ 'is-invalid': submitted && f['uogorg'].errors }">
+                                    @if (submitted && f['uogorg'].errors) {
+                                        <div class="invalid-feedback">
+                                          @if (f['uogorg'].errors['required']) {
+                                          <div>Entité est obligatoire</div>
+                                          }
+                                          @if (f['uogorg'].errors['minlength']) {
+                                            <div>Entité doit avoir au moins 4 caractéres</div>
+                                        }
+                                        </div>
+                                        }
+
+                            </div>
+
+                            <div class="col-md-10">
+                                <label for="textInput">Description</label>
+                                <input type="text" class="form-control form-control-sm" formControlName="uogdesc"
+                                    placeholder="Entrer du texte" [readOnly]="true"
+                                    [ngClass]="{ 'is-invalid': submitted && f['uogdesc'].errors }">
+                                    @if (submitted && f['uogdesc'].errors) {
+                                        <div class="invalid-feedback">
+                                          @if (f['uogdesc'].errors['required']) {
+                                          <div>Description est obligatoire</div>
+                                          }
+                                          @if (f['uogdesc'].errors['minlength']) {
+                                            <div>Description doit avoir au moins 5 caractéres</div>
+                                        }
+                                        </div>
+                                        }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-footer text-muted">
+               
+                 <button class="btn btn-info"><i class="bi bi-floppy"></i></button>
+            
+            </div>
+            @if ( isFailed) {
+            <div class="alert alert-warning">
+                {{ errorMessage }}
+            </div>
+            }
+        </form>
+
+    </div>
+</div>

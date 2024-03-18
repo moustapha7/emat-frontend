@@ -13,11 +13,13 @@ export class AppComponent {
   showAdminBoard = false;
   showModeratorBoard = false;
   username?: string;
+  currentUser: any;
 
   constructor(private storageService: StorageService, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.isLoggedIn = this.storageService.isLoggedIn();
+    this.currentUser = this.storageService.getUser();
 
     if (this.isLoggedIn) {
       const user = this.storageService.getUser();
@@ -35,7 +37,7 @@ export class AppComponent {
       next: res => {
         console.log(res);
         this.storageService.clean();
-
+        this.isLoggedIn = false;
         window.location.reload();
       },
       error: err => {

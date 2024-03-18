@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { Organisation, Organisation2 } from '../models/organisation.model';
 import { environment } from '../../environnements/environnement';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,13 @@ export class OrganisationService {
 
   constructor(private http: HttpClient) { }
 
+  private selectedDataSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+  selectedData$: Observable<any> = this.selectedDataSubject.asObservable();
+
+  
+  setSelectedData(data: any) {
+    this.selectedDataSubject.next(data);
+  }
 
   public getAllOrganisations(): Observable<Organisation[]> {
     return this.http.get<Organisation[]>(environment.backendHost+"/api/emat/organisations");

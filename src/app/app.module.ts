@@ -45,6 +45,18 @@ import { AddOrganisationComponent } from './administration/organisation/add-orga
 import { OrganisationComponent } from './administration/organisation/organisation/organisation.component';
 import { OrganisationService } from './services/organisation.service';
 import { EditOrganisationComponent } from './administration/organisation/edit-organisation/edit-organisation.component';
+import { EmatComponent } from './emat/emat.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { AuthService } from './_services/auth.service';
+import { UtilisateursComponent } from './administration/utilisateurs/utilisateurs/utilisateurs.component';
+import { ListUtilisateurComponent } from './administration/utilisateurs/list-utilisateur/list-utilisateur.component';
+import { TitreComponent } from './titre/titre.component';
+import { MenuTabUserComponent } from './administration/utilisateurs/menu-tab-user/menu-tab-user.component';
+import { MenuTabOrgComponent } from './administration/organisation/menu-tab-org/menu-tab-org.component';
+import { UserOrganisationComponent } from './administration/utilisateurs/user-organisation/user-organisation.component';
+import { UserDepartementComponent } from './administration/utilisateurs/user-departement/user-departement.component';
+import { OrganisationDetailsComponent } from './administration/organisation/organisation-details/organisation-details.component';
+import { AddUserOrganisationComponent } from './administration/utilisateurs/add-user-organisation/add-user-organisation.component';
 
 @NgModule({
   declarations: [
@@ -84,7 +96,18 @@ import { EditOrganisationComponent } from './administration/organisation/edit-or
     ListOrganisationComponent,
     AddOrganisationComponent,
     OrganisationComponent,
-    EditOrganisationComponent
+    EditOrganisationComponent,
+    EmatComponent,
+    DashboardComponent,
+    UtilisateursComponent,
+    ListUtilisateurComponent,
+    TitreComponent,
+    MenuTabUserComponent,
+    MenuTabOrgComponent,
+    UserOrganisationComponent,
+    UserDepartementComponent,
+    OrganisationDetailsComponent,
+    AddUserOrganisationComponent
   ],
   imports: [
     BrowserModule,
@@ -92,7 +115,7 @@ import { EditOrganisationComponent } from './administration/organisation/edit-or
     FormsModule,
     HttpClientModule,CommonModule,ReactiveFormsModule
   ],
-  providers: [httpInterceptorProviders, MaintenanceService,OrganisationService],
+  providers: [httpInterceptorProviders, MaintenanceService,OrganisationService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

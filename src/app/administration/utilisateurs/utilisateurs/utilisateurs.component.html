@@ -1,0 +1,45 @@
+<app-menu-tab-user></app-menu-tab-user>
+
+
+  <div class="container">
+    <div class="card">
+        <div class="card-header">
+            Paramétre utilisateur
+            <div class="card-footer text-muted">
+                <a class="btn btn-outline-secondary" routerLink="/emat/add-utilisateur" routerLinkActive="active"><i class="bi bi-plus"></i></a>
+                <a class="btn btn-outline-secondary" ><i class="bi bi-arrow-counterclockwise"></i></a>
+                <a class="btn btn-outline-secondary" routerLink="/emat/utilisateurs" routerLinkActive="active"><i class="bi bi-layout-split"></i></a>
+                <a class="btn btn-outline-secondary" routerLink="/emat/list-utilisateurs" routerLinkActive="active"><i class="bi bi-skip-end-fill"></i></a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="container">
+                <div class="wrapper">
+                    <!-- Sidebar -->
+                    <div class="sidebar">
+                      <h2>Sidebar</h2>
+                      <ul>
+                        <li *ngFor="let u of utilisateurs; let i = index"
+                        [class.active]="i == currentIndex"
+                        (click)="setActiveUser(utilisateur, i)"
+                            >
+                          {{ u.username }} <br>
+                          {{ u.email }}
+                          <td><button class="btn btn-info"><i class="bi bi-eye"></i></button></td>
+                        </li>
+                      </ul>
+                    </div>
+                  
+                    <!-- Page Content
+                    <div class="content">
+                      <app-add-organisation></app-add-organisation>
+                       <app-edit-organisation></app-edit-organisation> -->
+                   <!-- </div> -->
+                  </div>
+            </div>
+        </div>
+        <div class="card-footer text-muted">
+            
+        </div>
+    </div>
+</div>

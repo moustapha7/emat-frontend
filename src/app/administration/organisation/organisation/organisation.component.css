@@ -62,4 +62,8 @@
     background-color: #e9ecef;
   }
   
-  
+  .list {
+    text-align: left;
+    max-width: 750px;
+    margin: auto;
+  }

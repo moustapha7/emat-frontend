@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { StorageService } from '../_services/storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
   errorMessage = '';
   roles: string[] = [];
 
-  constructor(private authService: AuthService, private storageService: StorageService) { }
+  constructor(private authService: AuthService, private storageService: StorageService, private route : Router) { }
 
   ngOnInit(): void {
     if (this.storageService.isLoggedIn()) {
@@ -37,12 +38,19 @@ export class LoginComponent implements OnInit {
         this.isLoggedIn = true;
         this.roles = this.storageService.getUser().roles;
         this.reloadPage();
+        this.route.navigate(['home']);
       },
       error: err => {
         this.errorMessage = err.error.message;
         this.isLoginFailed = true;
+        this.route.navigate(['login']);
+
       }
     });
+  }
+
+  isAuthenticated(): boolean {
+    return this.isLoggedIn;
   }
 
   reloadPage(): void {

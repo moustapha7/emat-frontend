@@ -1,52 +1,200 @@
-<app-navbar></app-navbar>
-<router-outlet>
-</router-outlet>
-<!-- <div id="app">
-  <nav class="navbar navbar-expand navbar-dark bg-dark">
-    <a href="#" class="navbar-brand">bezKoder</a>
-    <ul class="navbar-nav mr-auto" routerLinkActive="active">
+<app-titre></app-titre>
+@if (isLoggedIn) {
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <div class="container-fluid">
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown6" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+          </a>
+          <i class="bi bi-caret-down-square-fill"></i>
+
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown6">
+            <a class="dropdown-item" routerLink="/profile" routerLinkActive="active">Mon compte</a>
+            <a class="dropdown-item" routerLink="/emat/utilisateurs" routerLinkActive="active">A propos</a>
+            <a class="dropdown-item"   class="bg-dark" (click)="logout()">Déconnexion</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/home">Home</a>
+        </li>
+
+        <!-- Dropdown 1 -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Travaux
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+            <a class="dropdown-item" routerLink="/emat/ordre-de-travail" routerLinkActive="active">Ordre de travail</a>
+            <a class="dropdown-item" routerLink="/emat/planning-maintenance" routerLinkActive="active">Planning
+              Maintenance</a>
+          </div>
+        </li>
+
+        <!-- Dropdown 2 -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Stock
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+            <a class="dropdown-item" routerLink="/emat/articles" routerLinkActive="active">Articles</a>
+            <a class="dropdown-item" routerLink="/emat/fournisseurs" routerLinkActive="active">Fournisseurs</a>
+            <a class="dropdown-item" routerLink="/emat/magasins" routerLinkActive="active">Magasins</a>
+          </div>
+        </li>
+
+        <!-- Dropdown 3 -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Matériels
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
+            <a class="dropdown-item" routerLink="/emat/fiche-materiel" routerLinkActive="active">Fiche Matériel</a>
+            <a class="dropdown-item" routerLink="/emat/positions" routerLinkActive="active">Positions</a>
+
+          </div>
+        </li>
+
+        <!-- Dropdown 4 -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown4" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Flotte
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown4">
+            <a class="dropdown-item" routerLink="/emat/demande-attribution" routerLinkActive="active">Demande
+              d'attribution</a>
+            <a class="dropdown-item" routerLink="/emat/fiche-pv" routerLinkActive="active">Fiche PV</a>
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown5" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Exploitation
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown5">
+            <a class="dropdown-item" routerLink="/emat/demande-carte-total" routerLinkActive="active">Demande Carte
+              Total</a>
+            <a class="dropdown-item" routerLink="/emat/referentiel-carte" routerLinkActive="active">Réferentiel
+              Carte</a>
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown6" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Achats
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown6">
+            <a class="dropdown-item" routerLink="/emat/commandes" routerLinkActive="active">Commandes</a>
+            <a class="dropdown-item" routerLink="/emat/demande-achat" routerLinkActive="active">Demande d'achat</a>
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown6" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Budget
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown6">
+            <a class="dropdown-item" routerLink="/emat/budget-investissement" routerLinkActive="active">Budget
+              d'investissement</a>
+            <a class="dropdown-item" routerLink="/emat/budget-fonctionnement" routerLinkActive="active">Budget de
+              fonctionnement</a>
+            <a class="dropdown-item" routerLink="/emat/demande-investissement" routerLinkActive="active">Demande
+              d'investissement</a>
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown6" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Administration
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown6">
+            <a class="dropdown-item" routerLink="/emat/organisations" routerLinkActive="active">Organisations</a>
+            <a class="dropdown-item" routerLink="/emat/utilisateurs" routerLinkActive="active">Paramétre utilisateur</a>
+            <a class="dropdown-item" routerLink="/emat/list-utlisateurs" routerLinkActive="active">Groupes
+              utilisateurs</a>
+          </div>
+        </li>
+
+
+      </ul>
+
+    </div>
+    <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a href="/home" class="nav-link" routerLink="home">Home </a>
+        @for (role of currentUser.roles; track role) {
+        <a href="/profile" class="nav-link" routerLink="profile">{{ username }} | {{role}} | V1</a>
+        }
       </li>
-      @if (showAdminBoard) {
-        <li class="nav-item">
-          <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
-        </li>
-      }
-      @if (showModeratorBoard) {
-        <li class="nav-item">
-          <a href="/mod" class="nav-link" routerLink="mod">Moderator Board</a>
-        </li>
-      }
-      @if (isLoggedIn) {
-        <li class="nav-item">
-          <a href="/user" class="nav-link" routerLink="user">User</a>
-        </li>
-      }
+
     </ul>
-
-    @if (!isLoggedIn) {
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
-        </li>
-        <li class="nav-item">
-          <a href="/login" class="nav-link" routerLink="login">Login</a>
-        </li>
-      </ul>
-    } @else {
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
-        </li>
-        <li class="nav-item">
-          <a href class="nav-link" (click)="logout()">LogOut</a>
-        </li>
-      </ul>
-    }
-  </nav>
-
-  <div class="container">
-    <router-outlet></router-outlet>
   </div>
-</div> -->
+</nav>
+}
+  
+  <div id="app">
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
+      <!-- <a href="#" class="navbar-brand">bezKoder</a>
+      <ul class="navbar-nav mr-auto" routerLinkActive="active">
+        <li class="nav-item">
+          <a href="/home" class="nav-link" routerLink="home">Home </a>
+        </li>
+        @if (showAdminBoard) {
+          <li class="nav-item">
+            <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
+          </li>
+        }
+        @if (showModeratorBoard) {
+          <li class="nav-item">
+            <a href="/mod" class="nav-link" routerLink="mod">Moderator Board</a>
+          </li>
+        }
+        @if (isLoggedIn) {
+          <li class="nav-item">
+            <a href="/user" class="nav-link" routerLink="user">User</a>
+          </li>
+        }
+      </ul> -->
+  
+      @if (!isLoggedIn) {
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
+          </li>
+          <li class="nav-item">
+            <a href="/login" class="nav-link" routerLink="login">Login</a>
+          </li>
+        </ul>
+      } 
+      <!-- @else {
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
+          </li>
+          <li class="nav-item">
+            <a href class="nav-link" (click)="logout()">LogOut</a>
+          </li>
+        </ul>
+      } -->
+    </nav>
+  
+    <div class="container">
+      
+    </div>
+  </div>
+
+  <router-outlet></router-outlet> 

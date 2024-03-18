@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
+import { Router } from '@angular/router';
+import { StorageService } from '../_services/storage.service';
 
 @Component({
   selector: 'app-register',
@@ -15,10 +17,16 @@ export class RegisterComponent  implements OnInit{
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
+  isLoggedIn = false;
 
-  constructor(private authService: AuthService) { }
+
+  constructor(private authService: AuthService, private storageService: StorageService, private route : Router) { }
+
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    if (this.storageService.isLoggedIn()) {
+      this.isLoggedIn = true;
+     // this.roles = this.storageService.getUser().roles;
+    }
   }
 
   onSubmit(){

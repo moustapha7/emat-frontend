@@ -1,0 +1,46 @@
+<app-menu-tab-user></app-menu-tab-user>
+<div class="container">
+    <div class="card">
+        <div class="card-header">Utilisateurs
+            <div class="card-footer text-muted">
+                <a class="btn btn-outline-secondary" routerLink="/emat/add-user-organisations" routerLinkActive="active"><i class="bi bi-plus"></i></a>
+                <a class="btn btn-outline-secondary" ><i class="bi bi-arrow-counterclockwise"></i></a>
+                <a class="btn btn-outline-secondary" routerLink="/emat/user-organisations" routerLinkActive="active"><i class="bi bi-layout-split"></i></a>
+                <a class="btn btn-outline-secondary" routerLink="/emat/list-utilisateurs" routerLinkActive="active"><i class="bi bi-skip-end-fill"></i></a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="container">
+               <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Groupe</th>
+                            <th>Entité</th>
+                            <th>Description</th>
+                            <th>Par defaut</th>
+                            <th>Commun</th>
+                            <th>Action</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let uo of r5UserOrganisations">
+                            <td>{{uo.username}}</td>
+                            <td>{{uo.username}}</td>
+                            <td>{{uo.uogorg}}</td>
+                            <td>{{uo.uogdesc}}</td>
+                            <td><input type="checkbox" [(ngModel)]="uo.uogdefaut" [disabled]="true"></td>
+                            <td><input type="checkbox" [(ngModel)]="uo.uogcommun" [disabled]="true"></td>
+
+                            <td ><button (click)="deleteR5UserOrg(uo)" class="btn btn-danger"><i class="bi bi-trash"></i></button></td>
+                            <td><button class="btn btn-info" ><i class="bi bi-eye"></i></button></td>
+
+                        </tr>
+                    </tbody>
+               </table>
+            </div>
+        </div>
+       
+    </div>
+</div>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { StorageService } from '../_services/storage.service';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -17,7 +18,7 @@ export class NavbarComponent {
   showModeratorBoard = false;
   username?: string;
 
-  constructor(private storageService: StorageService, private authService: AuthService) { }
+  constructor(private storageService: StorageService, private authService: AuthService, private route : Router) { }
 
   ngOnInit(): void {
     this.isLoggedIn = this.storageService.isLoggedIn();
@@ -38,12 +39,14 @@ export class NavbarComponent {
       next: res => {
         console.log(res);
         this.storageService.clean();
-
         window.location.reload();
+        this.route.navigate(['login']);
+
       },
       error: err => {
         console.log(err);
       }
     });
   }
+  
 }

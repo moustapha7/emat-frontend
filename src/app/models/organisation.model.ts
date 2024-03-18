@@ -5,7 +5,7 @@ export interface Organisation {
 };
 
 export class Organisation2 {
-    id! :number;
-    entite! : string;
-    description!: string;
+    id? :number;
+    entite? : string;
+    description?: string;
 }

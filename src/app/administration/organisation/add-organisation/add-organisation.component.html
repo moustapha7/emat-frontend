@@ -1,3 +1,5 @@
+
+
 <div class="container">
     <div class="card">
         <form [formGroup]="addForm" (ngSubmit)="saveOrganisation()">
@@ -41,13 +43,8 @@
                                         </div>
                                         }
                             </div>
-
-
                         </div>
-
                     </div>
-                   
-
                 </div>
             </div>
 
@@ -56,6 +53,11 @@
                  <button class="btn btn-info"><i class="bi bi-floppy"></i></button>
             
             </div>
+            @if ( isFailed) {
+            <div class="alert alert-warning">
+                {{ errorMessage }}
+            </div>
+            }
         </form>
 
     </div>

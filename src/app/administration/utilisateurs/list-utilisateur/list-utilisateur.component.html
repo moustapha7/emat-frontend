@@ -1,0 +1,40 @@
+<app-menu-tab></app-menu-tab>
+<div class="container">
+    <div class="card">
+        <div class="card-header">Utilisateurs
+            <div class="card-footer text-muted">
+                <a class="btn btn-outline-secondary" routerLink="/emat/add-utilisateur" routerLinkActive="active"><i class="bi bi-plus"></i></a>
+                <a class="btn btn-outline-secondary" ><i class="bi bi-arrow-counterclockwise"></i></a>
+                <a class="btn btn-outline-secondary" routerLink="/emat/utilisateurs" routerLinkActive="active"><i class="bi bi-layout-split"></i></a>
+                <a class="btn btn-outline-secondary" routerLink="/emat/list-utilisateurs" routerLinkActive="active"><i class="bi bi-skip-end-fill"></i></a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="container">
+               <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Action</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let u of utilisateurs">
+                            <td>{{u.username}}</td>
+                            <td>{{u.email}}</td>
+                            <td>{{u.groupeUser}}</td>
+
+                            <td  *ngIf="isAdmin" ><button class="btn btn-danger" ><i class="bi bi-trash"></i></button></td>
+                            <td><button class="btn btn-info" ><i class="bi bi-eye"></i></button></td>
+
+                        </tr>
+                    </tbody>
+               </table>
+            </div>
+        </div>
+       
+    </div>
+</div>

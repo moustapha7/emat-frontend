@@ -31,6 +31,14 @@ import { ListOrganisationComponent } from './administration/organisation/list-or
 import { OrganisationComponent } from './administration/organisation/organisation/organisation.component';
 import { AddOrganisationComponent } from './administration/organisation/add-organisation/add-organisation.component';
 import { EditOrganisationComponent } from './administration/organisation/edit-organisation/edit-organisation.component';
+import { AuthenticationGuard } from './guard/authentication.guard';
+import { EmatComponent } from './emat/emat.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { UtilisateursComponent } from './administration/utilisateurs/utilisateurs/utilisateurs.component';
+import { ListUtilisateurComponent } from './administration/utilisateurs/list-utilisateur/list-utilisateur.component';
+import { UserOrganisationComponent } from './administration/utilisateurs/user-organisation/user-organisation.component';
+import { UserDepartementComponent } from './administration/utilisateurs/user-departement/user-departement.component';
+import { AddUserOrganisationComponent } from './administration/utilisateurs/add-user-organisation/add-user-organisation.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -40,42 +48,60 @@ const routes: Routes = [
   { path: 'user', component: BoardUserComponent },
   { path: 'mod', component: BoardModeratorComponent },
   { path: 'admin', component: BoardAdminComponent },
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  
-  { path: 'commandes', component: CommandesComponent },
-  { path: 'demande-achat', component: DemandeAchatComponent },
-
-  { path: 'budget-investissement', component: BudgetInvestissementComponent },
-  { path: 'budget-fonctionnement', component: BudgetFonctionnementComponent },
-  { path: 'demande-investissement', component: DemandeInvestissementComponent },
-
-  { path: 'demande-carte-total', component: DeamandeCarteTotalComponent },
-  { path: 'referentiel-carte', component: ReferentielCarteComponent },
-
-  { path: 'demande-attribution', component: DemandeAttributionComponent },
-  { path: 'fiche-pv', component: FichePVComponent },
-
-  { path: 'fiche-materiel', component: FicheMaterielComponent },
-  { path: 'positions', component: PositionsComponent },
-
-  { path: 'articles', component: ArticleComponent },
-  { path: 'fournisseurs', component: FournisseurComponent },
-  { path: 'magasins', component: MagasinComponent },
-
-  { path: 'ordre-de-travail', component: OrdreDeTravailComponent },
-  { path: 'activites', component: ActivitesComponent },
-  { path: 'pointer-main-oeuvre', component: PointerMainOeuvreComponent },
-  { path: 'planifier-main-oeuvre', component: PlanifierMainOeuvreComponent },
-  { path: 'planning-maintenance', component: MaintenancePlanningComponent },
-
-  { path: 'list-organisations', component: ListOrganisationComponent },
-  { path: 'organisations', component: OrganisationComponent },
-  { path: 'list-organisations', component: ListOrganisationComponent },
-  { path: 'add-organisations', component: AddOrganisationComponent },
-  { path: 'edit-organisations/:id', component: EditOrganisationComponent },
-
+  { path: 'dashboard', component: DashboardComponent },
 
   
+  // { path: '', redirectTo: 'login', pathMatch: 'full' },
+  {
+    path: 'emat', component: EmatComponent, canActivate: [],
+    children: [
+
+      { path: 'commandes', component: CommandesComponent },
+      { path: 'demande-achat', component: DemandeAchatComponent },
+
+      { path: 'budget-investissement', component: BudgetInvestissementComponent },
+      { path: 'budget-fonctionnement', component: BudgetFonctionnementComponent },
+      { path: 'demande-investissement', component: DemandeInvestissementComponent },
+
+      { path: 'demande-carte-total', component: DeamandeCarteTotalComponent },
+      { path: 'referentiel-carte', component: ReferentielCarteComponent },
+
+      { path: 'demande-attribution', component: DemandeAttributionComponent },
+      { path: 'fiche-pv', component: FichePVComponent },
+
+      { path: 'fiche-materiel', component: FicheMaterielComponent },
+      { path: 'positions', component: PositionsComponent },
+
+      { path: 'articles', component: ArticleComponent },
+      { path: 'fournisseurs', component: FournisseurComponent },
+      { path: 'magasins', component: MagasinComponent },
+
+      { path: 'ordre-de-travail', component: OrdreDeTravailComponent },
+      { path: 'activites', component: ActivitesComponent },
+      { path: 'pointer-main-oeuvre', component: PointerMainOeuvreComponent },
+      { path: 'planifier-main-oeuvre', component: PlanifierMainOeuvreComponent },
+      { path: 'planning-maintenance', component: MaintenancePlanningComponent },
+
+      { path: 'list-organisations', component: ListOrganisationComponent },
+      { path: 'organisations', component: OrganisationComponent },
+      { path: 'list-organisations', component: ListOrganisationComponent },
+      { path: 'add-organisations', component: AddOrganisationComponent },
+      { path: 'edit-organisations/:id', component: EditOrganisationComponent },
+
+      { path: 'utilisateurs', component: UtilisateursComponent },
+      { path: 'list-utilisateurs', component: ListUtilisateurComponent },
+      { path: 'user-organisations', component: UserOrganisationComponent },
+      { path: 'user-departements', component: UserDepartementComponent },
+      { path: 'add-user-organisations', component: AddUserOrganisationComponent },
+
+
+
+
+    ]
+  },
+ // { path: '', redirectTo: 'login', pathMatch: 'full' },
+
+
 ];
 
 @NgModule({

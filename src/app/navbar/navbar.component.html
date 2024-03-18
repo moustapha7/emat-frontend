@@ -1,4 +1,5 @@
-<nav class="navbar navbar-expand navbar-dark bg-dark">
+@if (isLoggedIn) {
+<nav   class="navbar navbar-expand navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">eMAT</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -18,8 +19,8 @@
             Travaux
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-            <a class="dropdown-item" routerLink="/ordre-de-travail" routerLinkActive="active">Ordre de travail</a>
-            <a class="dropdown-item" routerLink="/planning-maintenance"  routerLinkActive="active">Planning Maintenance</a>
+            <a class="dropdown-item" routerLink="/emat/ordre-de-travail" routerLinkActive="active">Ordre de travail</a>
+            <a class="dropdown-item" routerLink="/emat/planning-maintenance"  routerLinkActive="active">Planning Maintenance</a>
           </div>
         </li>
 
@@ -30,9 +31,9 @@
             Stock
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-            <a class="dropdown-item" routerLink="/articles" routerLinkActive="active">Articles</a>
-            <a class="dropdown-item" routerLink="/fournisseurs" routerLinkActive="active">Fournisseurs</a>
-            <a class="dropdown-item" routerLink="/magasins" routerLinkActive="active">Magasins</a>
+            <a class="dropdown-item" routerLink="/emat/articles" routerLinkActive="active">Articles</a>
+            <a class="dropdown-item" routerLink="/emat/fournisseurs" routerLinkActive="active">Fournisseurs</a>
+            <a class="dropdown-item" routerLink="/emat/magasins" routerLinkActive="active">Magasins</a>
           </div>
         </li>
 
@@ -43,8 +44,8 @@
             Matériels
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
-            <a class="dropdown-item"routerLink="/fiche-materiel" routerLinkActive="active">Fiche Matériel</a>
-            <a class="dropdown-item" routerLink="/positions" routerLinkActive="active">Positions</a>
+            <a class="dropdown-item"routerLink="/emat/fiche-materiel" routerLinkActive="active">Fiche Matériel</a>
+            <a class="dropdown-item" routerLink="/emat/positions" routerLinkActive="active">Positions</a>
 
           </div>
         </li>
@@ -56,8 +57,8 @@
             Flotte
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown4">
-            <a class="dropdown-item" routerLink="/demande-attribution" routerLinkActive="active">Demande d'attribution</a>
-            <a class="dropdown-item" routerLink="/fiche-pv" routerLinkActive="active">Fiche PV</a>
+            <a class="dropdown-item" routerLink="/emat/demande-attribution" routerLinkActive="active">Demande d'attribution</a>
+            <a class="dropdown-item" routerLink="/emat/fiche-pv" routerLinkActive="active">Fiche PV</a>
           </div>
         </li>
 
@@ -67,8 +68,8 @@
             Exploitation
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown5">
-            <a class="dropdown-item" routerLink="/demande-carte-total" routerLinkActive="active">Demande Carte Total</a>
-            <a class="dropdown-item" routerLink="/referentiel-carte" routerLinkActive="active">Réferentiel Carte</a>
+            <a class="dropdown-item" routerLink="/emat/demande-carte-total" routerLinkActive="active">Demande Carte Total</a>
+            <a class="dropdown-item" routerLink="/emat/referentiel-carte" routerLinkActive="active">Réferentiel Carte</a>
           </div>
         </li>
 
@@ -78,8 +79,8 @@
             Achats
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown6">
-            <a class="dropdown-item" routerLink="/commandes" routerLinkActive="active">Commandes</a>
-            <a class="dropdown-item"routerLink="/demande-achat" routerLinkActive="active">Demande d'achat</a>
+            <a class="dropdown-item" routerLink="/emat/commandes" routerLinkActive="active">Commandes</a>
+            <a class="dropdown-item"routerLink="/emat/demande-achat" routerLinkActive="active">Demande d'achat</a>
           </div>
         </li>
 
@@ -89,9 +90,9 @@
             Budget
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown6">
-            <a class="dropdown-item" routerLink="/budget-investissement" routerLinkActive="active">Budget d'investissement</a>
-            <a class="dropdown-item" routerLink="/budget-fonctionnement" routerLinkActive="active">Budget de fonctionnement</a>
-            <a class="dropdown-item" routerLink="/demande-investissement" routerLinkActive="active">Demande d'investissement</a>
+            <a class="dropdown-item" routerLink="/emat/budget-investissement" routerLinkActive="active">Budget d'investissement</a>
+            <a class="dropdown-item" routerLink="/emat/budget-fonctionnement" routerLinkActive="active">Budget de fonctionnement</a>
+            <a class="dropdown-item" routerLink="/emat/demande-investissement" routerLinkActive="active">Demande d'investissement</a>
           </div>
         </li>
 
@@ -101,7 +102,7 @@
             Administration
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown6">
-            <a class="dropdown-item" routerLink="/organisations" routerLinkActive="active">Organisations</a>
+            <a class="dropdown-item" routerLink="/emat/organisations" routerLinkActive="active">Organisations</a>
             <a class="dropdown-item" href="#">1t</a>
             <a class="dropdown-item" href="#">1</a>
           </div>
@@ -111,13 +112,21 @@
       </ul>
      
     </div>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
+      </li>
+      <li class="nav-item">
+        <a href class="nav-link" (click)="logout()">LogOut</a>
+      </li>
+    </ul>
   </div>
-  
 </nav>
+}
 
 <div id="app">
   <nav class="navbar navbar-expand navbar-dark bg-dark">
-    <a href="#" class="navbar-brand">bezKoder</a>
+    <!-- <a href="#" class="navbar-brand">bezKoder</a>
     <ul class="navbar-nav mr-auto" routerLinkActive="active">
       <li class="nav-item">
         <a href="/home" class="nav-link" routerLink="home">Home </a>
@@ -137,7 +146,7 @@
           <a href="/user" class="nav-link" routerLink="user">User</a>
         </li>
       }
-    </ul>
+    </ul> -->
 
     @if (!isLoggedIn) {
       <ul class="navbar-nav ml-auto">
@@ -148,7 +157,8 @@
           <a href="/login" class="nav-link" routerLink="login">Login</a>
         </li>
       </ul>
-    } @else {
+    } 
+    <!-- @else {
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
           <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
@@ -157,10 +167,10 @@
           <a href class="nav-link" (click)="logout()">LogOut</a>
         </li>
       </ul>
-    }
+    } -->
   </nav>
 
   <div class="container">
-    <router-outlet></router-outlet>
+    <!-- <router-outlet></router-outlet>  -->
   </div>
 </div>

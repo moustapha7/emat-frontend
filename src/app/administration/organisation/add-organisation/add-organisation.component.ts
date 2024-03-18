@@ -3,6 +3,7 @@ import { OrganisationService } from '../../../services/organisation.service';
 import { Organisation, Organisation2 } from '../../../models/organisation.model';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-organisation',
@@ -20,6 +21,7 @@ export class AddOrganisationComponent implements OnInit {
   organisations! : Organisation[];
   id!: number;
   itemId!: number;
+  isFailed = false;
 
 
   constructor(private orgService: OrganisationService,private router: Router, 
@@ -52,17 +54,20 @@ export class AddOrganisationComponent implements OnInit {
     this.orgService.createOrganisation(this.addForm.value).subscribe(
       result =>
       {
-        alert("Success Save");
+        Swal.fire({
+          title: `Entité bien ajoutée`,
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 1500
+        })
         this.addForm.reset();
-        this.router.navigate(['organisations']);
-        this.listOrganisations();
+        this.router.navigate(['emat/organisations']);
 
       },
       error => {
          console.log('error to save origanisation'); 
          this.errorMessage = error.error.message;
-        
-
+         this.isFailed = true;
       }
      
     )

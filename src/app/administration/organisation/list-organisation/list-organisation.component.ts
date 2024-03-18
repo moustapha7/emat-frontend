@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Organisation } from '../../../models/organisation.model';
 import { OrganisationService } from '../../../services/organisation.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 
 
@@ -36,35 +37,38 @@ export class ListOrganisationComponent implements OnInit{
 
   updateOrg(id : number)  {
  
-    this.route.navigate(['edit-organisations', id]);
+    this.route.navigate(['emat/edit-organisations', id]);
   }
 
-
-  // selectedData: DataItem = { entite: '', description: '' };
-  // selectedIdx: number | null = null;
-
-  // displayData(data: DataItem, index: number) {
-  //   this.selectedData = data;
-  //   this.selectedIdx = index;
-  // }
-
-  submitForm() {
-    // Add logic to handle form submission if needed
-   // console.log('Form submitted:', this.selectedData);
-  }
 
   deleteOrg(o : Organisation) {
-    let conf =confirm("Etes vous sure ?")
-    if(!conf) return;
-    this.orgaService.deleteOrg(o.id).subscribe({
-      next : (resp) =>{
-        alert("Entité deleted succesfully");
+    Swal.fire({
+      title: "Voulez vous supprimer l'entité ?",
+      //text: 'You will not be able to recover this file!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Oui',
+      cancelButtonText: 'Non'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.orgaService.deleteOrg(o.id).subscribe({
+          next : (resp) =>{
 
-        this.listOrganisations();
-      },
-      error : err =>{
-        console.log(err);
-      }
+            Swal.fire(
+              'Deleted!',
+              'Entité bien supprimée.',
+              'success'
+            )
+            this.listOrganisations();
+          },
+          error : err =>{
+            Swal.fire(
+              err.error.message,
+            )
+          }
+        });
+        
+      } 
     });
   }
 

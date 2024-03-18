@@ -46,11 +46,11 @@ export class OrganisationComponent {
       description :['',   [Validators.required, Validators.minLength(4)]],
     });
 
-    // this.id = this.actRoute.snapshot.params['id'];
-    // this.orgService.getOrgById(this.id).subscribe(
-    //   (data : any)=> {
-    //   this.organisation= data;
-    //   });  
+    this.id = this.actRoute.snapshot.params['id'];
+    this.orgService.getOrgById(this.id).subscribe(
+      (data : any)=> {
+      this.organisation= data;
+      });  
   }
  
   setActiveOrganisation(organisation: Organisation2, index: number): void {
@@ -67,23 +67,27 @@ export class OrganisationComponent {
   }
 
 
-
-  selectedData: DataItem = { entite: '', description: '' };
-  selectedIdx: number | null = null;
-
-  displayData(data: DataItem, index: number) {
-    this.selectedData = data;
-    this.selectedIdx = index;
+  refreshList(): void {
+    this.listOrganisations();
+    this.currentOrg = {};
+    this.currentIndex = -1;
   }
 
   updateOrg(id : number)  {
  
-    this.route.navigate(['edit-organisations', id]);
+    this.route.navigate(['emat/edit-organisations', id]);
+    this.listOrganisations();
+
   }
 
-  submitForm() {
-    // Add logic to handle form submission if needed
-    console.log('Form submitted:', this.selectedData);
+  // submitForm() {
+  //   // Add logic to handle form submission if needed
+  //   console.log('Form submitted:', this.selectedData);
+  // }
+
+  onReset() {
+    this.submitted = false;
+    this.addForm.reset();
   }
 
 }
